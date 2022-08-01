@@ -46,7 +46,7 @@ export const asyncRoutes = [
         name: 'Index',
         component: () => import('@/views/index/index'),
         meta: {
-          title: '首页',
+          title: '工作台',
           icon: 'home',
           affix: true,
         },

@@ -194,7 +194,7 @@
       <el-col :xs="24" :sm="24" :md="13" :lg="13" :xl="13">
         <el-card class="card" shadow="never">
           <div slot="header">
-            <span>更新日志</span>
+            <span>工作经理</span>
           </div>
           <el-timeline :reverse="reverse">
             <el-timeline-item
