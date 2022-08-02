@@ -16,60 +16,6 @@
           </div>
         </el-alert>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-        <el-card shadow="never">
-          <div slot="header">
-            <span>访问量</span>
-          </div>
-          <vab-chart
-            :autoresize="true"
-            theme="vab-echarts-theme"
-            :options="fwl"
-          />
-          <div class="bottom">
-            <span>
-              日均访问量:
-
-              <vab-count
-                :start-val="config1.startVal"
-                :end-val="config1.endVal"
-                :duration="config1.duration"
-                :separator="config1.separator"
-                :prefix="config1.prefix"
-                :suffix="config1.suffix"
-                :decimals="config1.decimals"
-              />
-            </span>
-          </div>
-        </el-card>
-      </el-col>
-      <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-        <el-card shadow="never">
-          <div slot="header">
-            <span>摸鱼数量</span>
-          </div>
-          <vab-chart
-            :autoresize="true"
-            theme="vab-echarts-theme"
-            :options="sqs"
-          />
-          <div class="bottom">
-            <span>
-              总摸鱼数:
-              <vab-count
-                :start-val="config2.startVal"
-                :end-val="config2.endVal"
-                :duration="config2.duration"
-                :separator="config2.separator"
-                :prefix="config2.prefix"
-                :suffix="config2.suffix"
-                :decimals="config2.decimals"
-              />
-            </span>
-          </div>
-        </el-card>
-      </el-col>
-
       <el-col
         v-for="(item, index) in iconList"
         :key="index"
@@ -89,112 +35,27 @@
           </el-card>
         </router-link>
       </el-col>
-
-      <el-col :xs="24" :sm="24" :md="24" :lg="11" :xl="11">
+      <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
         <el-card class="card" shadow="never">
           <div slot="header">
-            <span>依赖信息</span>
-            <div style="float: right">部署时间:{{ updateTime }}</div>
+            <span>教育经历</span>
           </div>
-          <div class="bottom-btn">
-            <el-popover placement="top" width="250" trigger="hover">
-              测试摸鱼
-              <el-image :src="require('@/assets/ewm.png')"></el-image>
-              <a slot="reference" target="_blank">
-                <el-button type="primary"></el-button>
-              </a>
-            </el-popover>
-            <a @click="handleChangeTheme">
-              <el-button type="danger">修改主题和布局</el-button>
-            </a>
-            <a
-              target="_blank"
-              href="https://github.com/chuzhixin/vue-admin-beautiful"
+          <el-timeline :reverse="reverse">
+            <el-timeline-item
+              v-for="(activity, index) in activities"
+              :key="index"
+              :timestamp="activity.timestamp"
+              :color="activity.color"
             >
-              <el-button type="warning">
-                github下载源码点star（实时更新）
-              </el-button>
-            </a>
-            <a
-              target="_blank"
-              href="https://gitee.com/chu1204505056/vue-admin-beautiful"
-            >
-              <el-button type="warning">码云下载源码点star</el-button>
-            </a>
-            <el-popover placement="top" width="250" trigger="hover">
-              <p>谢谢您愿意支持开源，加群获取文档，群内提供基础模板</p>
-              <el-image :src="require('@/assets/ewm.png')"></el-image>
-              <a slot="reference" target="_blank">
-                <el-button type="warning">文档</el-button>
-              </a>
-            </el-popover>
-          </div>
-          <table class="table">
-            <tr>
-              <td>@vue/cli版本</td>
-              <td>{{ devDependencies['@vue/cli-service'] }}</td>
-              <td>vue版本</td>
-              <td>{{ dependencies['vue'] }}</td>
-            </tr>
-            <tr>
-              <td>vuex版本</td>
-              <td>{{ dependencies['vuex'] }}</td>
-              <td>vue-router版本</td>
-              <td>{{ dependencies['vue-router'] }}</td>
-            </tr>
-            <tr>
-              <td>element-ui版本</td>
-              <td>{{ dependencies['element-ui'] }}</td>
-              <td>axios版本</td>
-              <td>{{ dependencies['axios'] }}</td>
-            </tr>
-            <tr>
-              <td>eslint版本</td>
-              <td>{{ devDependencies['eslint'] }}</td>
-              <td>prettier版本</td>
-              <td>{{ devDependencies['prettier'] }}</td>
-            </tr>
-            <tr>
-              <td>sass版本</td>
-              <td>{{ devDependencies['sass'] }}</td>
-              <td>mockjs版本</td>
-              <td>{{ dependencies['mockjs'] }}</td>
-            </tr>
-            <tr>
-              <td>zx-layouts版本</td>
-              <td>{{ dependencies['zx-layouts'] }}</td>
-              <td>lodash版本</td>
-              <td>{{ dependencies['lodash'] }}</td>
-            </tr>
-          </table>
-        </el-card>
-
-        <el-card shadow="never">
-          <div slot="header">
-            <span>其他信息</span>
-          </div>
-          <div style="text-align: center">
-            <vab-colorful-icon style="font-size: 140px" icon-class="vab" />
-            <h1 style="font-size: 30px">vue-admin-beautiful</h1>
-          </div>
-          <div v-for="(item, index) in noticeList" :key="index">
-            <el-alert
-              v-if="index !== 0"
-              :title="item.title"
-              :type="item.type"
-              :closable="item.closable"
-            ></el-alert>
-            <br />
-          </div>
-          <el-alert :closable="false" :title="userAgent" type="info"></el-alert>
-          <br />
+              {{ activity.content }}
+            </el-timeline-item>
+          </el-timeline>
         </el-card>
       </el-col>
-
-      <el-col :xs="24" :sm="24" :md="13" :lg="13" :xl="13">
+      <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
         <el-card class="card" shadow="never">
           <div slot="header">
-            <span>工作经理</span>
+            <span>工作经历</span>
           </div>
           <el-timeline :reverse="reverse">
             <el-timeline-item
@@ -213,16 +74,13 @@
 </template>
 
 <script>
-  import VabChart from '@/plugins/echarts'
   import { dependencies, devDependencies } from '../../../package.json'
   import { getList } from '@/api/changeLog'
   import { getNoticeList } from '@/api/notice'
   import { getRepos, getStargazers } from '@/api/github'
   export default {
     name: 'Index',
-    components: {
-      VabChart,
-    },
+    components: {},
     data() {
       return {
         timer: 0,

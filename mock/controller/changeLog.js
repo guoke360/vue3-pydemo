@@ -4,12 +4,12 @@ const data = [
     timestamp: '2017.9-2018.3',
   },
   {
-    content: '增加更换主题功能',
-    timestamp: '2020-04-10',
+    content: '上海仙瑜网络',
+    timestamp: '2018.7-2020.5',
   },
   {
-    content: '大幅精简代码',
-    timestamp: '2020-04-14',
+    content: '江苏斯诺物联',
+    timestamp: '2020.6-今',
   },
 ]
 

@@ -7,9 +7,9 @@
       </keep-alive>
     </transition>
     <footer v-show="footerCopyright" class="footer-copyright">
-      Copyright
+      纯copy
       <vab-icon :icon="['fas', 'copyright']"></vab-icon>
-      vue-admin-beautiful-pro 开源免费版 {{ fullYear }}
+      纳格兰自己用的魔改瞎写写版本{{ fullYear }}
     </footer>
   </div>
 </template>
